@@ -10,6 +10,7 @@ const Form = (props) => {
     axios.post('https://gacha-chance.herokuapp.com/api/login', values)
     .then(res => {
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('id', res.data.id)
     })
   }
 

@@ -1,11 +1,20 @@
-import React from "react";
-import useForm from "./useForm";
+import React, { useState } from "react";
+import axios from 'axios';
+import { connect } from 'react-redux'
 
-const Form = () => {
-  const { values, handleChange, handleSubmit } = useForm(login);
+const Form = (props) => {
+  const [values, setValues] = useState({username: '', password: ''})
 
-  function login() {
-    console.log(values);
+  function handleLogin(e) {
+    e.preventDefault()
+    axios.post('https://gacha-chance.herokuapp.com/api/login', values)
+    .then(res => {
+      localStorage.setItem('token', res.data.token);
+    })
+  }
+
+  function handleChange(e) {
+    setValues({...values, [e.target.name]: e.target.value})
   }
 
   return (
@@ -13,16 +22,15 @@ const Form = () => {
       <div className="container">
         <div className="column is-4 is-offset-4">
           <div className="box">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
               <div className="field">
                 <label className="label">Email Address</label>
                 <div className="control">
                   <input
                     className="input"
-                    type="email"
-                    name="email"
+                    type="text"
+                    name="username"
                     onChange={handleChange}
-                    value={values.email}
                     required
                   />
                 </div>
@@ -35,7 +43,6 @@ const Form = () => {
                     type="password"
                     name="password"
                     onChange={handleChange}
-                    value={values.password}
                     required
                   />
                 </div>
@@ -54,4 +61,10 @@ const Form = () => {
   );
 };
 
-export default Form;
+const mapStateToProps = (state) => {
+  return { 
+    user: state.user
+}}
+
+
+export default connect(mapStateToProps, {})(Form);

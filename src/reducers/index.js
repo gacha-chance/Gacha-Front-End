@@ -9,7 +9,8 @@ const initialState = {
     data: {
         chance: 0.00,
         rollNum: 0,
-        compounded: 0.00
+        compounded: 0.00,
+        desireNum: 0        
     }
 }
 

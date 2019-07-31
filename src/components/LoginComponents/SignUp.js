@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import useSignUp from "./useSignUp";
+import axios from "axios";
 
 const SignUp = () => {
-  const { values, handleChange, handleSubmit } = useSignUp(SignUp);
+  const [values, setValues] = useState({username: '', password: ''})
 
-  function SignUp() {
-    console.log(values);
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post(`https://gacha-chance.herokuapp.com/api/register`, values)
+    .then(res => {
+      console.log(res.data)
+    })
+  }
+
+  function handleChange(e) {
+    setValues({...values, [e.target.name]: e.target.value})
   }
 
   return (
@@ -19,10 +28,9 @@ const SignUp = () => {
                 <div className="control">
                   <input
                     className="input"
-                    type="email"
-                    name="email"
+                    type="text"
+                    name="username"
                     onChange={handleChange}
-                    value={values.email}
                     required
                   />
                 </div>
@@ -35,7 +43,6 @@ const SignUp = () => {
                     type="password"
                     name="password"
                     onChange={handleChange}
-                    value={values.password}
                     required
                   />
                 </div>

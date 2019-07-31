@@ -1,25 +1,16 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 
 
-const Calculator = () => {
+const Calculator = (props) => {
 
-    const [ attempts , setAttempts ] = useState(0);
-    const [ acquireChance , setAcquireChance ] = useState(0);
-    const [ successes , setSuccesses ] = useState(0);
+    const [values, setValues] = useState({attempts: 0, chance: 0.00, desiredSuccesses: 0})
 
-    const probability = (100 * (1 - (Math.pow((1-(acquireChance)) , attempts / successes)))).toFixed(2);
+    const probability = (100 * (1 - (Math.pow((1-(values.chance/100)) , values.attempts / values.desiredSuccesses)))).toFixed(2);
 
-    const changeAttempts = (event) => {
-        return setAttempts(event.target.value)
-    }
-
-    const changeChance = (event) => {
-        return setAcquireChance(event.target.value)
-    }
-
-    const changeSuccesses = (event) => {
-        return setSuccesses(event.target.value)
+    const changeHandler = (e) => {
+        setValues({...values, [e.target.name]: e.target.value})
     }
 
     const captionHandler = () => {
@@ -39,9 +30,9 @@ const Calculator = () => {
         
             <div className="inputContainer">
                 <form>
-                    <input name="attempts" type="number" placeholder="# of Pulls" onChange={changeAttempts} />
-                    <input name="possibleSpawns" type="number" placeholder="% Chance of Success" onChange={changeChance} />
-                    <input name="desiredSuccesses" type="number" placeholder="# of Successes Desired" onChange={changeSuccesses} />
+                    <input name="attempts" type="number" placeholder="# of Pulls" onChange={changeHandler} />
+                    <input name="chance" type="number" placeholder="% Chance of Success" onChange={changeHandler} />
+                    <input name="desiredSuccesses" type="number" placeholder="# of Successes Desired" onChange={changeHandler} />
                 </form>
             </div>
             
@@ -55,4 +46,10 @@ const Calculator = () => {
     )
 }
 
-export default Calculator;
+const mapStateToProps = state => {
+    return {
+        data: state.data
+    }
+}
+
+export default connect(mapStateToProps, {})(Calculator);

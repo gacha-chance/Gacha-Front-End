@@ -1,11 +1,7 @@
 const initialState = {
-    user: {
-        username: '',
-        password: '',
-        id: 0,
-    },
+    id: 0,
     token: '',
-    saved: [],
+    saved: {},
     data: {
         chance: 0.00,
         rollNum: 0,

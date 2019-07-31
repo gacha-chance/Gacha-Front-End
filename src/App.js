@@ -4,7 +4,11 @@ import Calculator from './components/CalcComponents/index';
 import './App.scss';
 
 function App() {
-return <Calculator />
+  return (
+    <div className="App">
+      <Calculator />
+    </div>
+  )
 }
 
 export default App;

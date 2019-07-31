@@ -1,7 +1,10 @@
+
 import React from "react";
 import "./App.css";
 import Forms from "./components/LoginComponents/Forms";
-import logo from "./logo.svg";
+import Calculator from './components/CalcComponents/index';
+import './App.scss';
+
 
 function App() {
   return (
@@ -10,8 +13,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <Forms />
       </header>
+      <Calculator />
     </div>
-  );
+  )
 }
 
 export default App;

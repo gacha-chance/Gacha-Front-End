@@ -10,14 +10,21 @@
 //   container.classList.remove("right-panel-active");
 // });
 import React from "react";
-import LoginForm from "./LoginForm";
-import SignUpForm from "./SignUpForm";
+import Login from "./Login";
+import SignUp from "./SignUp";
 
 function Forms() {
   return (
     <div>
-      <LoginForm />
-      <SignUpForm />
+      <div>
+        <label>Login</label>
+        <Login />
+      </div>
+      <hr />
+      <div>
+        <label>Sign Up</label>
+        <SignUp />
+      </div>
     </div>
   );
 }

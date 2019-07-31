@@ -1,19 +1,15 @@
-
 import React from "react";
-import "./App.css";
 import Forms from "./components/LoginComponents/Forms";
 import Calculator from './components/CalcComponents/index';
 import './App.scss';
+import {Route} from 'react-router-dom'
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Forms />
-      </header>
-      <Calculator />
+      <Route path="/login" component={Forms} />
+      <Route path="/calc" component={Calculator} />
     </div>
   )
 }

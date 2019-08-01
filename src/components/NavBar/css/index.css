@@ -1,0 +1,137 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Barlow', sans-serif;
+}
+h1,
+h2 {
+  font-family: 'Comfortaa', cursive;
+}
+.logo-name {
+  font-family: 'Francois One', sans-serif;
+}
+header {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0px 0px 50px 40px #c7c7c7;
+}
+@media only screen and (max-width: 767px) {
+  .navbar-toggler {
+    font-size: 1rem;
+  }
+}
+.logo-name.navbar-brand {
+  font-size: 1.9rem;
+}
+@media only screen and (max-width: 767px) {
+  .logo-name.navbar-brand {
+    margin: auto;
+    font-size: 1.4rem;
+  }
+}
+nav {
+  background-color: black;
+}
+#navbarNav .navbar-nav .nav-item .nav-link {
+  color: #6e6e6e;
+  position: relative;
+  text-transform: uppercase;
+  margin: auto;
+}
+#navbarNav .navbar-nav .nav-item .nav-link:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+#navbarNav .navbar-nav .nav-item .nav-link:hover {
+  color: white;
+}
+#navbarNav .navbar-nav .nav-item .nav-link:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+#navbarNav .navbar-nav .nav-item .nav-link.active {
+  color: white;
+}
+#navbarNav .navbar-nav .nav-item .nav-link.active:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+.jumbotron {
+  height: 100vh;
+  background-image: url("header.jpg");
+  background-size: cover;
+  resize: horizontal;
+}
+.jumbotron hr {
+  border-color: black;
+}
+@media only screen and (max-width: 500px) {
+  .jumbotron {
+    margin-top: 5%;
+    padding: 0;
+    text-align: center;
+  }
+  .jumbotron header {
+    margin: 0 10px;
+  }
+}
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #9a9fad;
+}
+@media only screen and (max-width: 500px) {
+  footer {
+    font-size: 1rem;
+  }
+}
+#second-row {
+  margin-top: 2%;
+}
+@media only screen and (max-width: 500px) {
+  #second-row {
+    margin-top: 20%;
+  }
+}
+#about-devs {
+  padding: 5%;
+  margin: auto;
+}
+#about-devs h2 {
+  text-align: center;
+}
+@media only screen and (max-width: 767px) {
+  #about-devs {
+    margin-top: 15%;
+    text-align: center;
+  }
+}
+.card {
+  padding-top: 20px;
+  color: black;
+}
+.card h2 {
+  margin-top: 10%;
+}

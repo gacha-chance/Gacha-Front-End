@@ -22,10 +22,20 @@ const Calculator = (props) => {
 
     const saveHandler = e => {
         e.preventDefault()
-        props.saveData(values.rollNum)
-        props.saveData(values.chance)
-        props.saveData(values.desiredOutcome)
-        props.saveData(values.compoundedChance)
+
+        const obj = {
+
+            rollNum: values.rollNum,
+            chance: values.chance,
+            desiredOutcome: values.desiredOutcome,
+            compoundedChance: values.compoundedChance
+        }
+        const {rollNum,chance, desiredOutcome, compoundedChance} = obj
+    
+        props.saveData({rollNum}, 'addRoll')
+        props.saveData({chance}, 'addChance')
+        props.saveData({desiredOutcome}, 'addDesired')
+        props.saveData({compoundedChance}, 'addComp')
     }
 
     const captionHandler = () => {

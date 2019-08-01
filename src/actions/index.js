@@ -46,11 +46,11 @@ export const fetchChance = () => dispatch => {
         .catch(err => dispatch({ type: FETCH_FAILURE, payload: err}))
 }
 
-export const saveData = (newData) => dispatch => {
-    const id = localStorage.getItem('id')
+export const saveData = (newData, dataType) => dispatch => {
+    const id = localStorage.getItem('id')    
     dispatch({ type: SAVE_START })
     axiosWithAuth()
-        .post(`https://gacha-chance.herokuapp.com/api/saved/${id}`, newData)
+        .post(`https://gacha-chance.herokuapp.com/api/registered/${id}/${dataType}`, newData)
         .then(res => dispatch({ type: SAVE_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: SAVE_FAILURE, payload: err }))
 }

@@ -1,9 +1,0 @@
-[build]
-  base    = ""
-  publish = "/build"
-  command = "yarn build --type=UMD_DEV && yarn && yarn prestart && yarn build"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

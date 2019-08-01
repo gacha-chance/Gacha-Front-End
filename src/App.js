@@ -1,22 +1,28 @@
 import React from "react";
+import { Route } from "react-router-dom";
+import "./App.scss";
+import Calculator from "./components/CalcComponents/index";
 import Forms from "./components/LoginComponents/Forms";
-import Calculator from './components/CalcComponents/index';
-import './App.scss';
-import {Route, Link} from 'react-router-dom'
+import Nav from "./components/NavBar/Nav";
+import NavBar from "./components/NavBar/NavBar";
+import { PrivateRoute } from "./components/PrivateRoute";
+
 import SavedPage from "./components/SavedComponents/SavedPage";
-import { PrivateRoute } from './components/PrivateRoute'
 
 function App() {
   return (
     <div className="App">
-      <Link to="/calc">Calculator</Link>
-      <Link to="/saved">Saved</Link>
-      <Link to="/login">Login</Link>
+      <Nav />
+      <NavBar />
+
+
       <Route path="/login" component={Forms} />
       <Route path="/calc" component={Calculator} />
       <PrivateRoute path="/saved" component={SavedPage} />
+      <div>
+      </div>
     </div>
-  )
+  );
 }
-
+// const styles = StyleSheet.create
 export default App;

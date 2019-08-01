@@ -1,5 +1,4 @@
 import React from "react";
-import { ImageBackground } from "react-native";
 import { Route } from "react-router-dom";
 import "./App.scss";
 import Calculator from "./components/CalcComponents/index";
@@ -11,16 +10,15 @@ import SavedPage from "./components/SavedComponents/SavedPage";
 
 function App() {
   return (
-    <ImageBackground source={require("./header.jpg")} className="App">
-      {/* <img src={BackGroundIMG} alt="gacha background" /> */}
+    <div className="App">
+      <Nav />
       <NavBar />
       <Route path="/login" component={Forms} />
       <Route path="/calc" component={Calculator} />
       <PrivateRoute path="/saved" component={SavedPage} />
       <div>
-        <Nav />
       </div>
-    </ImageBackground>
+    </div>
   );
 }
 // const styles = StyleSheet.create

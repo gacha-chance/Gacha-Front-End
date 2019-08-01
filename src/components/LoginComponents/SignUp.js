@@ -43,6 +43,7 @@ const SignUp = () => {
           />
         </div>
       </div>
+      <hr />
       <button type="submit" className="button is-block is-info is-fullwidth">
         SignUp
       </button>

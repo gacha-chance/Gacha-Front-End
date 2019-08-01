@@ -4,19 +4,19 @@ import Forms from "./../LoginComponents/Forms";
 import SavedPage from "./../SavedComponents/SavedPage";
 
 const Nav = () => {
-  const [bio, setBio] = useState("");
+  const [page, setPage] = useState("");
   return (
     <div>
       <div className="App">
         <div className="Nav">
-          <button onClick={() => setBio(<Forms />)}>Login/SignUp</button>
+          <button onClick={() => setPage(<Forms />)}>Login/SignUp</button>
 
-          <button onClick={() => setBio(<Calculator />)}>Calculator</button>
+          <button onClick={() => setPage(<Calculator />)}>Calculator</button>
 
-          <button onClick={() => setBio(<SavedPage />)}>Saved List</button>
+          <button onClick={() => setPage(<SavedPage />)}>Saved List</button>
         </div>
         <hr />
-        <div>{bio}</div>
+        <div>{page}</div>
       </div>
     </div>
   );

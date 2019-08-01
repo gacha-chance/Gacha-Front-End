@@ -9,6 +9,8 @@ import { PrivateRoute } from './components/PrivateRoute'
 function App() {
   return (
     <div className="App">
+      <Link to="/calc">Calculator</Link>
+      <Link to="/saved">Saved</Link>
       <Link to="/login">Login</Link>
       <Route path="/login" component={Forms} />
       <Route path="/calc" component={Calculator} />

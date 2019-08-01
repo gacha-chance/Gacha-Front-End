@@ -1,19 +1,15 @@
-// const signUpButton = document.getElementById("signUp");
-// const signInButton = document.getElementById("signIn");
-// const container = document.getElementById("container");
-
-// signUpButton.addEventListener("click", () => {
-//   container.classList.add("right-panel-active");
-// });
-
-// signInButton.addEventListener("click", () => {
-//   container.classList.remove("right-panel-active");
-// });
-import React from "react";
+import React, { useState } from "react";
+import "./form.css";
 import Login from "./Login";
 import SignUp from "./SignUp";
 
-function Forms() {
+const Forms = () => {
+  const [toggleState, setToggleState] = useState("off");
+
+  function toggle() {
+    setToggleState(toggleState === "off" ? "right-panel-active" : "off");
+  }
+
   return (
     <div>
       <div>
@@ -27,6 +23,6 @@ function Forms() {
       </div>
     </div>
   );
-}
+};
 
 export default Forms;

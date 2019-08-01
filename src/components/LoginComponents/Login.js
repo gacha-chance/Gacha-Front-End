@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { connect } from 'react-redux'
 
-const Form = (props) => {
+const Form = () => {
   const [values, setValues] = useState({username: '', password: ''})
 
   function handleLogin(e) {
@@ -10,6 +9,7 @@ const Form = (props) => {
     axios.post('https://gacha-chance.herokuapp.com/api/login', values)
     .then(res => {
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('id', res.data.id)
     })
   }
 
@@ -61,10 +61,4 @@ const Form = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return { 
-    user: state.user
-}}
-
-
-export default connect(mapStateToProps, {})(Form);
+export default Form;

@@ -1,25 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { saveData } from '../../actions'
 
 
 
-const Calculator = () => {
+const Calculator = (props) => {
 
-    const [ attempts , setAttempts ] = useState(0);
-    const [ acquireChance , setAcquireChance ] = useState(0);
-    const [ successes , setSuccesses ] = useState(0);
+    const [values, setValues] = useState({rollNum: 0, chance: 0.00, desiredOutcome: 0, compoundedChance: 0})
 
-    const probability = (100 * (1 - (Math.pow((1-(acquireChance)) , attempts / successes)))).toFixed(2);
+    const probability = (100 * (1 - (Math.pow((1-(values.chance/100)) , values.rollNum / values.desiredOutcome)))).toFixed(2);
 
-    const changeAttempts = (event) => {
-        return setAttempts(event.target.value)
+    useEffect(() => {
+        const compoundedChance = probability;
+        setValues({...values, compoundedChance: compoundedChance})}
+        , [values])
+
+
+    const changeHandler = (e) => {
+        setValues({...values, [e.target.name]: e.target.value})
     }
 
-    const changeChance = (event) => {
-        return setAcquireChance(event.target.value)
-    }
-
-    const changeSuccesses = (event) => {
-        return setSuccesses(event.target.value)
+    const saveHandler = e => {
+        e.preventDefault()
+        props.saveData(values.rollNum)
+        props.saveData(values.chance)
+        props.saveData(values.desiredOutcome)
+        props.saveData(values.compoundedChance)
     }
 
     const captionHandler = () => {
@@ -34,14 +40,14 @@ const Calculator = () => {
                     <h1>{["NaN", "Infinity", "-Infinity"].includes(probability.toString()) ? "Enter some numbers below to get started." : probability + "%"}</h1>
                     <p>Snarky Caption Goes Here.</p>
                 </div>
-                <button className="saveButton">Save</button>
+                <button className="saveButton" onClick={saveHandler}>Save</button>
             </div>
         
             <div className="inputContainer">
                 <form>
-                    <input name="attempts" type="number" placeholder="# of Pulls" onChange={changeAttempts} />
-                    <input name="possibleSpawns" type="number" placeholder="% Chance of Success" onChange={changeChance} />
-                    <input name="desiredSuccesses" type="number" placeholder="# of Successes Desired" onChange={changeSuccesses} />
+                    <input name="rollNum" type="number" placeholder="# of Pulls" onChange={changeHandler} />
+                    <input name="chance" type="number" placeholder="% Chance of Success" onChange={changeHandler} />
+                    <input name="desiredOutcome" type="number" placeholder="# of Successes Desired" onChange={changeHandler} />
                 </form>
             </div>
             
@@ -55,4 +61,10 @@ const Calculator = () => {
     )
 }
 
-export default Calculator;
+const mapStateToProps = state => {
+    return {
+        data: state.data
+    }
+}
+
+export default connect(mapStateToProps, { saveData })(Calculator);

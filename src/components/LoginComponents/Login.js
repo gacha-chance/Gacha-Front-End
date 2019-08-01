@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { connect } from 'react-redux'
 
-const Form = (props) => {
+const Form = () => {
   const [values, setValues] = useState({username: '', password: ''})
 
   function handleLogin(e) {

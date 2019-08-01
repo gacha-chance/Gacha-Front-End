@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useSignUp from "./useSignUp";
 import axios from "axios";
 
 const SignUp = () => {

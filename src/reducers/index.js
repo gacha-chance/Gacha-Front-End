@@ -4,7 +4,10 @@ import {
     FETCH_CHANCE_SUCCESS, 
     FETCH_DESIRE_SUCCESS,
     FETCH_ROLLS_SUCCESS,
-    FETCH_FAILURE
+    FETCH_FAILURE,
+    SAVE_START,
+    SAVE_SUCCESS,
+    SAVE_FAILURE
 } from '../actions'
 
 const initialState = {
@@ -76,6 +79,25 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 isFetching: false,
+                error: action.payload
+            }
+        case SAVE_START:
+            return {
+                ...state,
+                isSaving: true,
+                error: ''
+            }
+        case SAVE_SUCCESS:
+            return {
+                ...state,
+                isSaving: false,
+                error: '',
+                saved: action.payload
+            }
+        case SAVE_FAILURE:
+            return {
+                ...state,
+                isSaving: false,
                 error: action.payload
             }
         default:

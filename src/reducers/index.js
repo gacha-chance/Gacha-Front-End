@@ -20,12 +20,6 @@ const initialState = {
     isFetching: false,
     isSaving: false,
     error: '',
-    data: {
-        chance: 0.00,
-        rollNum: 0,
-        compounded: 0.00,
-        desireNum: 0        
-    }
 }
 
 export function reducer(state = initialState, action) {
@@ -94,11 +88,14 @@ export function reducer(state = initialState, action) {
                 isSaving: false,
                 error: '',
                 saved: {
-                    ...state.saved,
-                    compounded: action.payload.compoundedChance,
-                    desired: action.payload.desiredOutcome,
-                    rollNum: action.payload.rollNum,
-                    chance: action.payload.chance
+                    compounded: [
+                        ...state.saved.compounded],
+                    desired: [
+                        ...state.saved.desired],
+                    rollNum: [
+                        ...state.saved.rollNum],
+                    chance: [
+                        ...state.saved.chance]
                 }
             }
         case SAVE_FAILURE:

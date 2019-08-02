@@ -24,7 +24,6 @@ const Calculator = (props) => {
         e.preventDefault()
 
         const obj = {
-
             rollNum: values.rollNum,
             chance: values.chance,
             desiredOutcome: values.desiredOutcome,
@@ -73,7 +72,7 @@ const Calculator = (props) => {
 
 const mapStateToProps = state => {
     return {
-        data: state.data
+        saved: state.saved
     }
 }
 
